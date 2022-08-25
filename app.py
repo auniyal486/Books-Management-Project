@@ -13,7 +13,7 @@ def get_dynamo_client():
 
 @app.route('/')
 def index():
-    return 'Books Management Project'
+    return json.dumps("Books Management Project")
 
 @app.route('/get-books',methods=['GET'])
 def get_books():
