@@ -6,7 +6,7 @@ import json
 import os
 
 app = Flask(__name__)
-dynamo_client = boto3.resource('dynamodb',aws_access_key_id=os.environ("AWS_DYNAMO_KEY"), aws_secret_access_key=os.environ("DYNAMO_SECRET"), region_name=os.environ('REGION_NAME'))
+dynamo_client = boto3.resource('dynamodb',aws_access_key_id=os.environ.get("AWS_DYNAMO_KEY"), aws_secret_access_key=os.environ.get("DYNAMO_SECRET"), region_name=os.environ.get('REGION_NAME'))
 
 def get_dynamo_client():
     return dynamo_client
