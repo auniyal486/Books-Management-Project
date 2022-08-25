@@ -192,4 +192,5 @@ def get_issued_information_on_date_range():
     return json.dumps(books)
 
 if __name__=="__main__":
-    app.run()
+    port = int(os.environ.get('PORT', 5000))
+    app.run(port=port)
