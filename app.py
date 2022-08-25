@@ -123,7 +123,7 @@ def update_return_transaction():
     response = table.put_item(
         Item=item
     )
-    return json.dumps(cur_rent)
+    return json.dumps(str(cur_rent))
 
 @app.route('/people-issued-book',methods=["GET"])
 def people_issued_book():
@@ -140,7 +140,7 @@ def people_issued_book():
     people=[]
     for item in response['Items']:
         people.append(item['person_name'])
-    return json.dumps(people)
+    return json.dumps(str(people))
 
 @app.route('/total-rent-of-book',methods=["GET"])
 def total_rent_of_book():
@@ -157,7 +157,7 @@ def total_rent_of_book():
     rent=0
     for item in response['Items']:
         rent+=item['rent']
-    return json.dumps(rent)
+    return json.dumps(str(rent))
 
 @app.route('/books-issued-by-person')
 def books_issued_by_person():
@@ -174,7 +174,7 @@ def books_issued_by_person():
     books=[]
     for item in response['Items']:
         books.append(item['book_name'])
-    return json.dumps(books)
+    return json.dumps(str(books))
 
 @app.route('/get-issued-information-on-date-range',methods=['GET'])
 def get_issued_information_on_date_range():
@@ -189,7 +189,7 @@ def get_issued_information_on_date_range():
         issue_date=datetime.datetime.strptime(item['issue_date'],'%Y-%m-%d')
         if start_date<=issue_date and end_date>=issue_date:
             books.append(item)
-    return json.dumps(books)
+    return json.dumps(str(books))
 
 if __name__=="__main__":
     port = int(os.environ.get('PORT', 5000))
